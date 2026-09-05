@@ -1,0 +1,162 @@
+{
+ "basenji": {
+  "file": "basenji dog/Image_19.jpg",
+  "src": "fci"
+ },
+ "basenji.puppy": {
+  "file": "basenji dog/Image_16.jpg",
+  "src": "fci"
+ },
+ "bolognese": {
+  "file": "bolognese dog/Image_20.jpg",
+  "src": "fci"
+ },
+ "bolognese.puppy": {
+  "file": "bolognese dog/Image_10.jpg",
+  "src": "fci"
+ },
+ "border": {
+  "file": "terrier-border/n02093754_1536.jpg",
+  "src": "dogceo"
+ },
+ "border.puppy": {
+  "file": "terrier-border/n02093754_4332.jpg",
+  "src": "dogceo"
+ },
+ "boston": {
+  "file": "boston terrier dog/Image_30.jpg",
+  "src": "fci"
+ },
+ "boston.puppy": {
+  "file": "boston terrier dog/Image_28.jpg",
+  "src": "fci"
+ },
+ "cavalier": {
+  "file": "cavalier king charles spaniel dog/Image_28.jpg",
+  "src": "fci"
+ },
+ "cavalier.puppy": {
+  "file": "cavalier king charles spaniel dog/Image_2.jpg",
+  "src": "fci"
+ },
+ "chihuahua": {
+  "file": "chihuahua dog/Image_32.jpg",
+  "src": "fci"
+ },
+ "chihuahua.puppy": {
+  "file": "chihuahua/tired-chester.jpg",
+  "src": "dogceo"
+ },
+ "cirneco": {
+  "file": "cirneco dell'etna dog/Image_1.jpg",
+  "src": "fci"
+ },
+ "cirneco.puppy": {
+  "file": "cirneco dell'etna dog/Image_23.png",
+  "src": "fci"
+ },
+ "dachshund": {
+  "file": "dachshund dog/Image_9.jpg",
+  "src": "fci"
+ },
+ "dachshund.puppy": {
+  "file": "dachshund dog/Image_22.jpg",
+  "src": "fci"
+ },
+ "dsf": {
+  "file": "danish-swedish farmdog/Image_28.jpg",
+  "src": "fci"
+ },
+ "dsf.puppy": {
+  "file": "danish-swedish farmdog/Image_19.jpg",
+  "src": "fci"
+ },
+ "ett": {
+  "file": "english toy terrier (black &tan) dog/Image_3.jpg",
+  "src": "fci"
+ },
+ "ett.puppy": {
+  "file": "english toy terrier (black &tan) dog/Image_13.jpg",
+  "src": "fci"
+ },
+ "gpinscher": {
+  "file": "pinscher/Coffee_Soul_Bari016.jpg",
+  "src": "dogceo"
+ },
+ "gpinscher.puppy": {
+  "file": "german pinscher dog/Image_22.jpg",
+  "src": "fci"
+ },
+ "greyhound": {
+  "file": "greyhound dog/Image_35.jpg",
+  "src": "fci"
+ },
+ "havanese": {
+  "file": "havanese/00100trPORTRAIT_00100_BURST20191103202017556_COVER.jpg",
+  "src": "dogceo"
+ },
+ "iggy": {
+  "file": "italian sighthound dog/Image_3.jpg",
+  "src": "fci"
+ },
+ "iggy.puppy": {
+  "file": "italian sighthound dog/Image_22.jpg",
+  "src": "fci"
+ },
+ "manchester": {
+  "file": "manchester terrier dog/Image_31.jpg",
+  "src": "fci"
+ },
+ "manchester.puppy": {
+  "file": "manchester terrier dog/Image_9.jpg",
+  "src": "fci"
+ },
+ "mediumpoodle": {
+  "file": "poodle dog/Image_10.jpg",
+  "src": "fci"
+ },
+ "minipoodle": {
+  "file": "poodle-miniature/n02113712_1554.jpg",
+  "src": "dogceo"
+ },
+ "minipoodle.puppy": {
+  "file": "poodle dog/Image_14.jpg",
+  "src": "fci"
+ },
+ "ratterrier": {
+  "file": "terrier-toy/n02087046_7365.jpg",
+  "src": "dogceo"
+ },
+ "rescue": {
+  "file": "mix/Milka6.jpg",
+  "src": "dogceo"
+ },
+ "rescue.puppy": {
+  "file": "mix/Blaze_07.jpg",
+  "src": "dogceo"
+ },
+ "schnauzer": {
+  "file": "miniature schnauzer dog/Image_3.jpg",
+  "src": "fci"
+ },
+ "schnauzer.puppy": {
+  "file": "miniature schnauzer dog/Image_9.jpg",
+  "src": "fci"
+ },
+ "toypoodle": {
+  "file": "poodle-toy/Cookie.jpg",
+  "src": "dogceo"
+ },
+ "toypoodle.puppy": {
+  "file": "poodle dog/Image_17.jpg",
+  "src": "fci"
+ },
+ "whippet": {
+  "file": "whippet dog/Image_26.jpg",
+  "src": "fci"
+ },
+ "whippet.puppy": {
+  "file": "whippet dog/Image_17.jpg",
+  "src": "fci"
+ }
+}
