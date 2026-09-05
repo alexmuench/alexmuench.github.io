@@ -1,4 +1,4 @@
-/* Dog Match — two-player breed matching for Alex & Hillary */
+/* Fetch — find the dog that fits your life. Two-player breed matching for Alex & Hillary */
 'use strict';
 
 /* ---------- constants ---------- */
@@ -139,9 +139,9 @@ SCREENS.welcome = () => {
     <div>
       ${topbar({ noMenu: false })}
       <div class="welcome-hero">
-        <div class="kicker">Dog Match · Nürnberg edition</div>
-        <h1>Find our dog</h1>
-        <p class="sub">Swipe separately. See where we match.</p>
+        <div class="kicker">Nürnberg edition</div>
+        <h1>Fetch</h1>
+        <p class="sub">Find the dog that fits your life.</p>
       </div>
       <div class="welcome-art">
         <div class="polaroid" style="left:8%;transform:rotate(-5deg);top:8px"><img src="img/whippet.jpg" alt=""></div>
@@ -154,7 +154,7 @@ SCREENS.welcome = () => {
         <div class="player-row"><div class="avatar" id="av2">H</div><input id="name2" value="${esc(S.players[1].name)}" maxlength="14" aria-label="Player 2 name"><span class="role">swipes second</span></div>
       </div>
       <button class="btn block" data-act="toPrefs">Set our preferences</button>
-      <p class="note" style="text-align:center;margin-top:14px">Two players · one phone · ${BREEDS.length} dogs</p>
+      <p class="note" style="text-align:center;margin-top:14px">Swipe separately · see where you match · ${BREEDS.length} dogs</p>
     </div>
   </div>`;
   const sync = () => {
@@ -801,8 +801,8 @@ function detailSheet(b) {
 
 function menuSheet() {
   openSheet(`
-    <h3>Dog Match</h3>
-    <p class="note" style="margin-top:4px">A two-player decision game for Alex &amp; Hillary.</p>
+    <h3>Fetch</h3>
+    <p class="note" style="margin-top:4px">Find the dog that fits your life — a two-player decision game for Alex &amp; Hillary.</p>
     <div class="stack" style="margin-top:18px">
       <button class="action-row" data-act="scoringInfo"><span class="ico">⚖️</span><span class="t"><b>How scoring works</b><span>No randomness, all preferences</span></span></button>
       <button class="action-row" data-act="creditsInfo"><span class="ico">📷</span><span class="t"><b>Photo credits</b><span>Real dogs, sourced openly</span></span></button>

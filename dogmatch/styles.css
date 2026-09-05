@@ -1,4 +1,4 @@
-/* Dog Match — warm minimal editorial design system */
+/* Fetch — warm minimal editorial design system */
 
 :root {
   --bg: #F6F3EE;
@@ -114,7 +114,7 @@ img { display: block; max-width: 100%; }
 /* ---------- welcome ---------- */
 .welcome { justify-content: space-between; text-align: left; }
 .welcome-hero { margin-top: 8vh; }
-.welcome h1 { font-size: 46px; line-height: 1.04; letter-spacing: -0.02em; }
+.welcome h1 { font-size: 64px; line-height: 1.02; letter-spacing: -0.02em; }
 .welcome .sub { font-size: 17.5px; color: var(--ink-2); margin-top: 14px; max-width: 30ch; }
 .welcome-art {
   margin: 30px -20px 26px; height: 240px; position: relative; overflow: visible;
@@ -446,7 +446,7 @@ table.compare { border-collapse: separate; border-spacing: 0; font-size: 13px; m
 /* small screens */
 @media (max-height: 700px) {
   .dogcard .photo { flex: 1.1; }
-  .welcome h1 { font-size: 38px; }
+  .welcome h1 { font-size: 50px; }
   .welcome-art { height: 190px; }
   .welcome-art .polaroid { width: 138px; height: 165px; }
 }

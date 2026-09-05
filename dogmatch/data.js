@@ -1,4 +1,4 @@
-/* Dog Match — breed data
+/* Fetch — breed data
    Facts are stored on natural scales and scored against preferences in scoring.js.
    1–5 scales: higher is always "better for apartment life with Alex & Hillary"
    (quiet 5 = very quiet, health 5 = very robust, alone 5 = handles hours easily).

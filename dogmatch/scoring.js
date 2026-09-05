@@ -1,4 +1,4 @@
-/* Dog Match — scoring engine (pure functions, no DOM)
+/* Fetch — scoring engine (pure functions, no DOM)
    Scores are derived from stated preferences — nothing is random.
    Weighted lifestyle fit → curve → explicit health/structure penalties. */
 

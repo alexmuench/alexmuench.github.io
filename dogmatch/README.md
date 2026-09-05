@@ -1,6 +1,7 @@
-# Dog Match
+# Fetch
 
-A two-player breed-matching game for Alex & Hillary — swipe separately, see where you match.
+Find the dog that fits your life. A two-player breed-matching game for
+Alex & Hillary — swipe separately, see where you match.
 Mobile-first static web app, no build step, no dependencies.
 
 ## Running it
