@@ -789,7 +789,7 @@ function detailSheet(b) {
   const f = b.facts;
   openSheet(`
     <p class="de-name">${esc(b.de)} · ${esc(b.weight)}</p>
-    <h3>${esc(b.name)} <span style="font-size:17px;color:var(--ink-3)">· ${sc.pct}%</span></h3>
+    <h3>${esc(b.name)} <span style="font-size:17px;color:var(--ink-2)">· ${sc.pct}%</span></h3>
     <h4>What living with this dog feels like</h4>
     <p class="body-text">${esc(b.feels)}</p>
     <h4>Pros — for your life</h4>
