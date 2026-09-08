@@ -51,6 +51,14 @@ const PHOTO_CREDITS = {
   "file": "boston terrier dog/Image_28.jpg",
   "src": "fci"
  },
+ "boxer": {
+  "file": "boxer dog/Image_11.jpg",
+  "src": "fci"
+ },
+ "boxer.puppy": {
+  "file": "boxer dog/Image_10.JPG",
+  "src": "fci"
+ },
  "cavalier": {
   "file": "cavalier king charles spaniel dog/Image_28.jpg",
   "src": "fci"
@@ -99,6 +107,18 @@ const PHOTO_CREDITS = {
   "file": "dachshund dog/Image_22.jpg",
   "src": "fci"
  },
+ "dalmatian": {
+  "file": "dalmatian dog/Image_6.jpg",
+  "src": "fci"
+ },
+ "dalmatian.puppy": {
+  "file": "dalmatian dog/Image_12.jpg",
+  "src": "fci"
+ },
+ "doodle": {
+  "file": "cockapoo/Scout.jpg",
+  "src": "dogceo"
+ },
  "dsf": {
   "file": "danish-swedish farmdog/Image_28.jpg",
   "src": "fci"
@@ -141,6 +161,14 @@ const PHOTO_CREDITS = {
  },
  "greyhound": {
   "file": "greyhound dog/Image_35.jpg",
+  "src": "fci"
+ },
+ "gsd": {
+  "file": "german shepherd dog/Image_3.jpg",
+  "src": "fci"
+ },
+ "gsd.puppy": {
+  "file": "german shepherd dog/Image_16.jpg",
   "src": "fci"
  },
  "havanese": {

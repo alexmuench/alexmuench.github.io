@@ -24,7 +24,7 @@ whole site to a dead address).
 | File | What it is |
 |---|---|
 | `index.html` | Shell — everything renders client-side |
-| `data.js` | The 40 dog profiles (facts, contextual pros/cons, costs), scenarios, preference schema, curated quick deck |
+| `data.js` | The 44 dog profiles (facts, contextual pros/cons, costs), scenarios, preference schema, curated quick deck |
 | `scoring.js` | Pure scoring engine — weighted preferences → % + explicit health/structure penalties |
 | `app.js` | State machine, swipe gestures, bottom sheets, all screens; state persists in `localStorage` |
 | `credits.js` | Per-photo source manifest (generated) |

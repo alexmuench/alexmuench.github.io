@@ -1127,6 +1127,118 @@ const BREEDS = [
     why: 'Adorable and portable; the voice and floof fight the brief.',
     watch: 'Barking, mostly — the fluff merely requires brushing.',
     pos: '50% 32%'
+  },
+  {
+    id: 'gsd', name: 'German Shepherd', de: 'Deutscher Schäferhund',
+    weight: '22–40 kg', kg: [22, 40],
+    tags: ['iconic', 'devoted', 'needs a job'],
+    line: 'Germany’s national dog: brilliant, loyal, and permanently on duty.',
+    facts: { shed: 0.15, brush: 'often', groom: 'none', exercise: 120,
+      calm: 2.5, affection: 4.5, quiet: 2.5, train: 5, apartment: 2.5,
+      travel: 2, alone: 2.5, health: 2.5 },
+    flags: ['big', 'watchdog'],
+    cost: '€140–200', puppyDiff: 'A serious project — a working adolescent with opinions about visitors.',
+    rescueDE: 'Very common — shelters are full of under-employed shepherds.',
+    feels: 'The most capable all-round dog ever bred, and a full-time commitment wearing a badge. In a house with land, work and an experienced handler it’s magnificent; in a flat it’s an off-duty police officer pacing the break room, narrating the corridor.',
+    pros: [
+      'Elite trainability — learns anything, wants to work with you',
+      'Deep, serious devotion to its family',
+      'An all-weather, all-terrain adventure partner',
+      'The definitive dog-shaped dog'
+    ],
+    cons: [
+      'Sheds industrially, all year, everywhere',
+      'Needs hours of real work — physical and mental',
+      'Guarding instincts amplify every stairwell sound',
+      'Hips, elbows and show-line backs carry real heritable risk'
+    ],
+    why: 'Peak capability and devotion, scaled for a house with a job to offer.',
+    watch: 'Workload, hair and guarding instincts — all industrial-grade.',
+    pos: '50% 35%'
+  },
+  {
+    id: 'doodle', name: 'Doodle Mix', de: 'Labradoodle / Cockapoo & Co.',
+    weight: '8–25 kg — depends on the cross', kg: [8, 25],
+    tags: ['famous mix', 'coat lottery', 'people-lover'],
+    line: 'The internet’s favourite dog. The coat is a lottery ticket.',
+    facts: { shed: 0.7, brush: 'daily', groom: 'regular', exercise: 90,
+      calm: 3, affection: 5, quiet: 3, train: 4.5, apartment: 4,
+      travel: 3.5, alone: 3, health: 3.5 },
+    flags: [],
+    cost: '€120–180', puppyDiff: 'Sweet and energetic — the coat turns serious at 8–12 months.',
+    rescueDE: 'Increasingly common — coat-shock surrenders are a real category.',
+    feels: 'Behind the marketing is usually a genuinely lovely dog: friendly, clever, family-proof. But “low-shedding” is decided per puppy by a coin flip of genetics, the adult coat mats like a wool jumper in a washing machine, and no club regulates who breeds them — the breeder’s honesty is the whole product.',
+    pros: [
+      'Affectionate, social, great with children and guests',
+      'Poodle brain: quick, willing, trainable',
+      'Often (not always) easier on allergies and furniture',
+      'Comes in whatever size the cross allows'
+    ],
+    cons: [
+      'Daily brushing plus a standing groomer bill — the pitch says otherwise',
+      'No standard: temperament, size and coat are a per-puppy lottery',
+      'A magnet for puppy farms — vet the breeder ruthlessly',
+      'More energy than the Instagram content suggests'
+    ],
+    why: 'A lovely family dog when the breeder is honest — the coat rarely is.',
+    watch: 'Unregulated breeding, and the grooming bill nobody mentions.',
+    pos: '50% 30%'
+  },
+  {
+    id: 'boxer', name: 'Boxer', de: 'Deutscher Boxer',
+    weight: '25–32 kg', kg: [25, 32],
+    tags: ['eternal puppy', 'heart of gold', 'big & bouncy'],
+    line: 'A 30 kg toddler with a heart of gold and a questionable nose.',
+    facts: { shed: 0.55, brush: 'rare', groom: 'none', exercise: 110,
+      calm: 2.5, affection: 5, quiet: 3.5, train: 3.5, apartment: 3,
+      travel: 2, alone: 3, health: 2 },
+    flags: ['big', 'brachy'],
+    cost: '€130–190', puppyDiff: 'Three years of joyful demolition before the brain moves in.',
+    rescueDE: 'Regular — boxer rescue is a well-organised scene.',
+    feels: 'Nobody loves like a boxer and nobody bounces like one either — a permanent toddler that greets you like you’ve returned from war, twice a day. The shortened muzzle taxes its breathing in heat, and the breed’s cancer statistics are the saddest in dogdom.',
+    pros: [
+      'Devoted, patient, famously wonderful with kids',
+      'Playful and expressive — a live-in comedian',
+      'Short, easy coat',
+      'Watchful without being yappy'
+    ],
+    cons: [
+      'Thirty kilos of enthusiasm in a small flat is furniture-relevant',
+      'Semi-flat face: heat, snoring and airline bans apply',
+      'The highest cancer rates of any breed — plan for heartbreak and bills',
+      'Energy stays puppy-grade well into year three'
+    ],
+    why: 'A pure-hearted family clown, oversized and health-taxed.',
+    watch: 'Space, bounce, heat — and a heartbreaking health record.',
+    pos: '50% 35%'
+  },
+  {
+    id: 'dalmatian', name: 'Dalmatian', de: 'Dalmatiner',
+    weight: '24–32 kg', kg: [24, 32],
+    tags: ['unmistakable', 'born to run', 'hair everywhere'],
+    line: 'Bred to trot beside a carriage for 40 km. Your sofa is not a carriage.',
+    facts: { shed: 0.1, brush: 'weekly', groom: 'none', exercise: 120,
+      calm: 2.5, affection: 4.5, quiet: 3.5, train: 3.5, apartment: 3,
+      travel: 2.5, alone: 2.5, health: 3 },
+    flags: ['big'],
+    cost: '€120–170', puppyDiff: 'A rocket with spots; BAER hearing tests are non-negotiable.',
+    rescueDE: 'Occasional — often post-movie impulse buys grown large.',
+    feels: 'A carriage dog without a carriage: elegant, athletic, endlessly enduring. Runners and cyclists get a dream partner; everyone else gets a under-exercised athlete shedding short white needles into every textile they own.',
+    pros: [
+      'A spectacular endurance partner for genuinely sporty people',
+      'Short, wipe-clean coat, no groomer',
+      'Sociable and people-oriented',
+      'Unmistakable — you will be stopped on every walk'
+    ],
+    cons: [
+      'Sheds stiff white hairs constantly, into everything, forever',
+      'Needs serious daily mileage, not strolls',
+      'Congenital deafness runs high — insist on BAER-tested lines',
+      'Urinary stones require lifelong diet awareness'
+    ],
+    why: 'A running partner in formal wear — with industrial shedding.',
+    watch: 'Mileage and hair; always check hearing (BAER).',
+    pos: '50% 35%'
   }
 ];
 
