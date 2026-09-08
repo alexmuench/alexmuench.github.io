@@ -145,7 +145,6 @@ SCREENS.welcome = () => {
       ${topbar({ noMenu: false })}
       <div class="welcome-hero">
         <div class="app-mark">${I.dogmark}</div>
-        <div class="kicker">The two-player dog decision</div>
         <h1>Fetch</h1>
         <p class="sub">Find the dog that fits your life.</p>
       </div>
