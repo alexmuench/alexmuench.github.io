@@ -1,9 +1,10 @@
-/* Fetch — find the dog that fits your life. Two-player breed matching for Alex & Hillary */
+/* Fetch — find the dog that fits your life. Two-player breed matching, pass-and-play. */
 'use strict';
 
 /* ---------- constants ---------- */
-const PUPPY_IDS = ['basenji','bolognese','border','boston','cavalier','chihuahua','cirneco',
-  'dachshund','dsf','ett','gpinscher','iggy','manchester','minipoodle','rescue','schnauzer','toypoodle','whippet'];
+const PUPPY_IDS = ['aussie','basenji','beagle','bolognese','border','boston','cavalier','chihuahua',
+  'cirneco','cocker','corgi','dachshund','dsf','ett','frenchie','golden','gpinscher','husky','iggy',
+  'labrador','maltese','manchester','minipoodle','pug','rescue','schnauzer','shiba','shihtzu','toypoodle','whippet'];
 const STORE_KEY = 'dogmatch-v1';
 
 const I = {
@@ -25,8 +26,8 @@ let S = load() || freshState();
 function freshState() {
   return {
     phase: 'welcome', turn: 0,
-    players: [{ key: 'p1', name: 'Alex' }, { key: 'p2', name: 'Hillary' }],
-    prefs: defaultPrefs(),
+    players: [{ key: 'p1', name: '' }, { key: 'p2', name: '' }],
+    prefs: defaultPrefs(), deckChoice: 'quick',
     orders: null, idx: 0,
     swipes: { p1: {}, p2: {} }, history: { p1: [], p2: [] },
     scenarios: { p1: null, p2: null },
@@ -49,7 +50,9 @@ function resetAll() { S = freshState(); save(); closeSheet(true); render(); }
 /* ---------- helpers ---------- */
 const app = document.getElementById('app');
 const byId = id => BREEDS.find(b => b.id === id);
+const deckBreeds = () => (S.deckChoice === 'full' ? BREEDS : BREEDS.filter(b => QUICK_DECK.includes(b.id)));
 const player = () => S.players[S.turn];
+const dn = p => p.name || (p.key === 'p1' ? 'Player 1' : 'Player 2');
 const other = () => S.players[1 - S.turn];
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const scoreOf = b => computeScore(b, S.prefs);
@@ -139,7 +142,7 @@ SCREENS.welcome = () => {
     <div>
       ${topbar({ noMenu: false })}
       <div class="welcome-hero">
-        <div class="kicker">Nürnberg edition</div>
+        <div class="kicker">The two-player dog decision</div>
         <h1>Fetch</h1>
         <p class="sub">Find the dog that fits your life.</p>
       </div>
@@ -150,19 +153,19 @@ SCREENS.welcome = () => {
     </div>
     <div>
       <div class="players">
-        <div class="player-row"><div class="avatar" id="av1">A</div><input id="name1" value="${esc(S.players[0].name)}" maxlength="14" aria-label="Player 1 name"><span class="role">swipes first</span></div>
-        <div class="player-row"><div class="avatar" id="av2">H</div><input id="name2" value="${esc(S.players[1].name)}" maxlength="14" aria-label="Player 2 name"><span class="role">swipes second</span></div>
+        <div class="player-row"><div class="avatar" id="av1">1</div><input id="name1" value="${esc(S.players[0].name)}" placeholder="Your name" maxlength="14" aria-label="Player 1 name"><span class="role">swipes first</span></div>
+        <div class="player-row"><div class="avatar" id="av2">2</div><input id="name2" value="${esc(S.players[1].name)}" placeholder="Their name" maxlength="14" aria-label="Player 2 name"><span class="role">swipes second</span></div>
       </div>
-      <button class="btn block" data-act="toPrefs">Set our preferences</button>
-      <p class="note" style="text-align:center;margin-top:14px">Swipe separately · see where you match · ${BREEDS.length} dogs</p>
+      <button class="btn block" data-act="toPrefs">Set your preferences</button>
+      <p class="note" style="text-align:center;margin-top:14px">Swipe separately · reveal where you match</p>
     </div>
   </div>`;
   const sync = () => {
-    const n1 = app.querySelector('#name1').value.trim() || 'Player 1';
-    const n2 = app.querySelector('#name2').value.trim() || 'Player 2';
-    S.players[0].name = n1; S.players[1].name = n2;
-    app.querySelector('#av1').textContent = n1[0].toUpperCase();
-    app.querySelector('#av2').textContent = n2[0].toUpperCase();
+    S.players[0].name = app.querySelector('#name1').value.trim();
+    S.players[1].name = app.querySelector('#name2').value.trim();
+    const n1 = S.players[0].name, n2 = S.players[1].name;
+    app.querySelector('#av1').textContent = n1 ? n1[0].toUpperCase() : '1';
+    app.querySelector('#av2').textContent = n2 ? n2[0].toUpperCase() : '2';
     save();
   };
   app.querySelector('#name1').addEventListener('input', sync);
@@ -176,7 +179,7 @@ SCREENS.prefs = () => {
     ${topbar({ back: 'toWelcome' })}
     <div class="kicker">Before you swipe</div>
     <h2>What matters to us</h2>
-    <p class="note">These tune every compatibility score. We’ve pre-set them to your known preferences — adjust freely.</p>
+    <p class="note">These tune every compatibility score. Preset to sensible city-apartment defaults — adjust freely.</p>
     ${PREF_SCHEMA.map(g => `
       <div class="pref-group">
         <div class="pref-label">${g.label}</div>
@@ -184,17 +187,31 @@ SCREENS.prefs = () => {
           ${g.opts.map(o => `<button class="${S.prefs[g.id] === o.v ? 'on' : ''}" data-v="${o.v}">${o.label}</button>`).join('')}
         </div>
       </div>`).join('')}
+    <div class="pref-group">
+      <div class="pref-label">Deck<span class="note" style="font-weight:400">who’s in the game</span></div>
+      <div class="seg" id="deckseg">
+        <button class="${S.deckChoice === 'quick' ? 'on' : ''}" data-deck="quick">Curated · ${QUICK_DECK.length}</button>
+        <button class="${S.deckChoice === 'full' ? 'on' : ''}" data-deck="full">Everyone · ${BREEDS.length}</button>
+      </div>
+    </div>
     <div class="prefs-footer">
       <button class="btn block" data-act="startSwiping">Start swiping</button>
     </div>
   </div>`;
-  app.querySelectorAll('.seg').forEach(seg => {
+  app.querySelectorAll('.seg[data-pref]').forEach(seg => {
     seg.addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
       S.prefs[seg.dataset.pref] = b.dataset.v;
       seg.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
       save();
     });
+  });
+  const dseg = app.querySelector('#deckseg');
+  dseg.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    S.deckChoice = b.dataset.deck;
+    dseg.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    save();
   });
 };
 
@@ -203,12 +220,12 @@ SCREENS.handoff = () => {
   const first = S.turn === 0;
   app.innerHTML = `
   <div class="screen handoff ${first ? '' : 'p2'}">
-    <div class="big-avatar">${esc(p.name[0].toUpperCase())}</div>
+    <div class="big-avatar">${esc(dn(p)[0].toUpperCase())}</div>
     <div class="kicker">${first ? 'Player 1' : 'Pass the phone'}</div>
-    <h2>${esc(p.name)}, you’re up</h2>
+    <h2>${esc(dn(p))}, you’re up</h2>
     <p class="note">Swipe right on dogs you’d genuinely want to meet, left on the rest.
-    ${first ? `${esc(other().name)} won’t see your answers.` : `No peeking at ${esc(other().name)}’s answers — the reveal comes after.`}</p>
-    <button class="btn" data-act="beginTurn">I’m ${esc(p.name)} — let’s go</button>
+    ${first ? `${esc(dn(other()))} won’t see your answers.` : `No peeking at ${esc(dn(other()))}’s answers — the reveal comes after.`}</p>
+    <button class="btn" data-act="beginTurn">I’m ${esc(dn(p))} — let’s go</button>
   </div>`;
 };
 
@@ -225,7 +242,7 @@ SCREENS.swipe = () => {
   app.innerHTML = `
   <div class="screen swipe-screen">
     <div class="topbar">
-      <span class="swipe-meta">${esc(p.name)}</span>
+      <span class="swipe-meta">${esc(dn(p))}</span>
       <div class="progress-track"><div class="progress-fill" style="width:${(S.idx / total) * 100}%"></div></div>
       <span class="swipe-meta">${S.idx + 1} / ${total}</span>
       <button class="iconbtn" data-act="menu" aria-label="Menu">${I.dots}</button>
@@ -347,7 +364,7 @@ SCREENS.reveal = () => {
   app.innerHTML = `
   <div class="screen reveal">
     <div class="kicker" style="margin-bottom:14px">The results are in</div>
-    <h1>It’s a match ❤️</h1>
+    <h1>It’s a match <span class="heart-pop">❤️</span></h1>
     <p class="sub">${n
       ? `You both said yes to <b>${n} dog${n > 1 ? 's' : ''}</b>.<br>Let’s see who made the cut.`
       : 'No mutual yeses — but the almost-matches are where the conversation starts.'}</p>
@@ -359,7 +376,8 @@ SCREENS.results = () => {
   const mm = mutualMatches();
   const am = almostMatches();
   const [pA, pB] = S.players;
-  const pattern = patternAnalysis(S, BREEDS);
+  const nA = dn(pA), nB = dn(pB);
+  const pattern = patternAnalysis({ ...S, players: S.players.map(pl => ({ ...pl, name: dn(pl) })) }, deckBreeds());
   const refBadge = scenariosDone();
   app.innerHTML = `
   <div class="screen results">
@@ -379,7 +397,7 @@ SCREENS.results = () => {
         return `<div class="almost-row">
           <img class="thumb" src="${imgSrc(b, false)}" alt="" loading="lazy">
           <span class="nm">${esc(b.name)}</span>
-          <span class="who">${esc(aLiked ? pA.name : pB.name)} ❤️ · ${esc(aLiked ? pB.name : pA.name)} ✕</span>
+          <span class="who">${esc(aLiked ? nA : nB)} ❤️ · ${esc(aLiked ? nB : nA)} ✕</span>
           <span class="pct2">${refined(b).pct}%</span>
         </div>`;
       }).join('')}
@@ -442,7 +460,7 @@ function gutPanel() {
   if (!ranked.length) return '';
   const topGut = byId(ranked[0][0]);
   const mm = mutualMatches();
-  const topScore = mm[0] || BREEDS.map(b => [b, refined(b).pct]).sort((a, b) => b[1] - a[1])[0][0];
+  const topScore = mm[0] || deckBreeds().map(b => [b, refined(b).pct]).sort((a, b) => b[1] - a[1])[0][0];
   const aligned = topGut.id === topScore.id;
   return `<div class="panel">
     <h4>Gut check</h4>
@@ -460,9 +478,9 @@ SCREENS.scnHandoff = () => {
   const p = player();
   app.innerHTML = `
   <div class="screen handoff ${S.turn ? 'p2' : ''}">
-    <div class="big-avatar">${esc(p.name[0].toUpperCase())}</div>
+    <div class="big-avatar">${esc(dn(p)[0].toUpperCase())}</div>
     <div class="kicker">Round 2 · Lifestyle</div>
-    <h2>${esc(p.name)}’s turn</h2>
+    <h2>${esc(dn(p))}’s turn</h2>
     <p class="note">Five everyday situations. Answer honestly — your combined answers nudge the rankings.</p>
     <button class="btn" data-act="beginScenarios">Start</button>
   </div>`;
@@ -477,7 +495,7 @@ SCREENS.scenario = () => {
   app.innerHTML = `
   <div class="screen">
     <div class="topbar">
-      <span class="swipe-meta">${esc(p.name)}</span>
+      <span class="swipe-meta">${esc(dn(p))}</span>
       <div class="progress-track"><div class="progress-fill" style="width:${(idx / SCENARIOS.length) * 100}%"></div></div>
       <span class="swipe-meta">${idx + 1} / ${SCENARIOS.length}</span>
     </div>
@@ -509,8 +527,8 @@ function advanceScenario() {
 
 /* ---------- visual duels ---------- */
 function buildDuelPairs() {
-  const likedSome = BREEDS.filter(b => S.swipes.p1[b.id] === true || S.swipes.p2[b.id] === true);
-  const pool = (likedSome.length >= 4 ? likedSome : BREEDS.slice())
+  const likedSome = deckBreeds().filter(b => S.swipes.p1[b.id] === true || S.swipes.p2[b.id] === true);
+  const pool = (likedSome.length >= 4 ? likedSome : deckBreeds())
     .sort((a, b) => refined(b).pct - refined(a).pct).slice(0, 8);
   const pairs = [];
   for (let i = 0; i + 1 < pool.length && pairs.length < 4; i += 2) pairs.push([pool[i].id, pool[i + 1].id]);
@@ -520,9 +538,9 @@ SCREENS.duelHandoff = () => {
   const p = player();
   app.innerHTML = `
   <div class="screen handoff ${S.turn ? 'p2' : ''}">
-    <div class="big-avatar">${esc(p.name[0].toUpperCase())}</div>
+    <div class="big-avatar">${esc(dn(p)[0].toUpperCase())}</div>
     <div class="kicker">Round 3 · Gut check</div>
-    <h2>${esc(p.name)}, trust your gut</h2>
+    <h2>${esc(dn(p))}, trust your gut</h2>
     <p class="note">Two dogs at a time. Tap the one you instinctively want to bring home. No scores, no overthinking.</p>
     <button class="btn" data-act="beginDuels">Show me the dogs</button>
   </div>`;
@@ -537,7 +555,7 @@ SCREENS.duel = () => {
   app.innerHTML = `
   <div class="screen" style="padding-bottom:calc(16px + env(safe-area-inset-bottom))">
     <div class="topbar">
-      <span class="swipe-meta">${esc(p.name)}</span>
+      <span class="swipe-meta">${esc(dn(p))}</span>
       <div class="progress-track"><div class="progress-fill" style="width:${(idx / S.duelPairs.length) * 100}%"></div></div>
       <span class="swipe-meta">${idx + 1} / ${S.duelPairs.length}</span>
     </div>
@@ -605,9 +623,9 @@ SCREENS.rankHandoff = () => {
   const p = player();
   app.innerHTML = `
   <div class="screen handoff ${S.turn ? 'p2' : ''}">
-    <div class="big-avatar">${esc(p.name[0].toUpperCase())}</div>
+    <div class="big-avatar">${esc(dn(p)[0].toUpperCase())}</div>
     <div class="kicker">Final call</div>
-    <h2>${esc(p.name)} ranks the finalists</h2>
+    <h2>${esc(dn(p))} ranks the finalists</h2>
     <p class="note">Tap in order: first tap = the dog you’d most want to meet in real life.</p>
     <button class="btn" data-act="beginRank">Rank them</button>
   </div>`;
@@ -619,7 +637,7 @@ SCREENS.rank = () => {
   const order = S.ranks[p.key] || [];
   app.innerHTML = `
   <div class="screen">
-    <div class="topbar"><span class="swipe-meta">${esc(p.name)}</span><span class="spacer"></span>
+    <div class="topbar"><span class="swipe-meta">${esc(dn(p))}</span><span class="spacer"></span>
       <span class="swipe-meta">${order.length} / ${list.length}</span></div>
     <h2 class="serif" style="font-size:26px">Tap in order of “want to meet”</h2>
     <div class="rank-grid">
@@ -634,7 +652,7 @@ SCREENS.rank = () => {
     </div>
     <div class="stack" style="margin-top:18px">
       <button class="btn block" data-act="confirmRank" ${order.length === list.length ? '' : 'disabled'}>
-        ${S.turn === 0 ? `Lock in & pass to ${esc(other().name)}` : 'Reveal our final ranking'}</button>
+        ${S.turn === 0 ? `Lock in & pass to ${esc(dn(other()))}` : 'Reveal our final ranking'}</button>
       <button class="btn quiet block" data-act="clearRank" ${order.length ? '' : 'disabled'}>Clear</button>
     </div>
   </div>`;
@@ -649,6 +667,7 @@ SCREENS.rank = () => {
 SCREENS.final = () => {
   const list = finalists();
   const [pA, pB] = S.players;
+  const nA = dn(pA), nB = dn(pB);
   const scoreRow = list.map(b => {
     const r1 = (S.ranks.p1 || []).indexOf(b.id), r2 = (S.ranks.p2 || []).indexOf(b.id);
     const borda = (r1 === -1 ? list.length : r1) + (r2 === -1 ? list.length : r2);
@@ -666,12 +685,12 @@ SCREENS.final = () => {
           <span class="fnum">${i + 1}</span>
           ${row.b._profile ? '<span style="width:64px;height:64px;border-radius:12px;background:var(--beige);display:grid;place-items:center;font-size:28px">🏡</span>' : `<img src="${imgSrc(row.b, false)}" alt="" style="object-position:${row.b.pos || '50% 35%'}">`}
           <span class="t"><b>${esc(row.b.name)}</b>
-            <span>${esc(pA.name)} #${row.r1 + 1} · ${esc(pB.name)} #${row.r2 + 1} · ${row.pct}% fit</span></span>
+            <span>${esc(nA)} #${row.r1 + 1} · ${esc(nB)} #${row.r2 + 1} · ${row.pct}% fit</span></span>
         </div>`).join('')}
     </div>
     <div class="panel">
       <h4>What happens next</h4>
-      <p class="note" style="font-size:14px">Meet real dogs before deciding: adult dogs of the breed (breed clubs run “meet the breed” days), and a Saturday at Tierheim Nürnberg costs nothing but time. The right individual beats the right breed — every time.</p>
+      <p class="note" style="font-size:14px">Meet real dogs before deciding: adult dogs of the breed (breed clubs run “meet the breed” days), and a Saturday at your local Tierheim costs nothing but time. The right individual beats the right breed — every time.</p>
     </div>
     <button class="btn quiet block" style="margin-top:14px" data-act="toResults">Back to results</button>
   </div>`;
@@ -699,7 +718,7 @@ SCREENS.rescue = () => {
     </div>
     <div class="panel">
       <h4>Where to look</h4>
-      <p class="note" style="font-size:14px">Tierheim Nürnberg, plus foster-based rescues that place dogs in family homes first — their assessments (“fine alone for 4 h, ignores bikes, quiet in the flat”) are exactly the data this profile needs. Popular profiles go fast; have your questions ready.</p>
+      <p class="note" style="font-size:14px">Your local Tierheim, plus foster-based rescues that place dogs in family homes first — their assessments (“fine alone for 4 h, ignores bikes, quiet in the flat”) are exactly the data this profile needs. Popular profiles go fast; have your questions ready.</p>
     </div>
     <div class="stack" style="margin-top:16px">
       <button class="btn block" data-act="saveRescue">Save profile &amp; add to comparison</button>
@@ -715,10 +734,11 @@ SCREENS.rescue = () => {
   }));
 };
 function rankSentence(pct) {
-  const better = BREEDS.filter(b => refined(b).pct > pct).length;
+  const deck = deckBreeds();
+  const better = deck.filter(b => refined(b).pct > pct).length;
   return better === 0 ? 'above every breed in the deck'
     : better === 1 ? 'second only to the top breed'
-    : `ahead of ${BREEDS.length - better} of the ${BREEDS.length} breeds here`;
+    : `ahead of ${deck.length - better} of the ${deck.length} breeds in your deck`;
 }
 
 /* ---------- sheets ---------- */
@@ -772,9 +792,9 @@ function detailSheet(b) {
     <h3>${esc(b.name)} <span style="font-size:17px;color:var(--ink-3)">· ${sc.pct}%</span></h3>
     <h4>What living with this dog feels like</h4>
     <p class="body-text">${esc(b.feels)}</p>
-    <h4>Pros — for us specifically</h4>
+    <h4>Pros — for your life</h4>
     <ul class="plist pros">${b.pros.map(x => `<li><span class="dot"></span>${esc(x)}</li>`).join('')}</ul>
-    <h4>Downsides — for us specifically</h4>
+    <h4>Downsides — for your life</h4>
     <ul class="plist cons">${b.cons.map(x => `<li><span class="dot"></span>${esc(x)}</li>`).join('')}</ul>
     <h4>Daily exercise</h4>
     <p class="body-text">${exerciseLabel(f.exercise)} — honest walks, not hallway laps.</p>
@@ -802,7 +822,7 @@ function detailSheet(b) {
 function menuSheet() {
   openSheet(`
     <h3>Fetch</h3>
-    <p class="note" style="margin-top:4px">Find the dog that fits your life — a two-player decision game for Alex &amp; Hillary.</p>
+    <p class="note" style="margin-top:4px">Find the dog that fits your life — a two-player decision game.</p>
     <div class="stack" style="margin-top:18px">
       <button class="action-row" data-act="scoringInfo"><span class="ico">⚖️</span><span class="t"><b>How scoring works</b><span>No randomness, all preferences</span></span></button>
       <button class="action-row" data-act="creditsInfo"><span class="ico">📷</span><span class="t"><b>Photo credits</b><span>Real dogs, sourced openly</span></span></button>
@@ -828,7 +848,7 @@ function scoringSheet() {
         </div>`).join('')}
     </div>
     <h4>Honesty adjustments</h4>
-    <p class="body-text" style="font-size:14px">Serious structural or heritable problems subtract points <i>after</i> the lifestyle score, so a pleasant temperament can’t hide them: flat-faced breathing risks (−8), breed-wide heritable disease (−8), spinal risk × your stairs (−6), fragility (−4), 30 kg vs. a top-floor walk-up (−4).</p>
+    <p class="body-text" style="font-size:14px">Serious structural or heritable problems subtract points <i>after</i> the lifestyle score, so a pleasant temperament can’t hide them: flat-faced breathing risks (−8), breed-wide heritable disease (−8), spinal risk with stairs and jumps (−6), fragility (−4), big-dog logistics in a walk-up flat (−4).</p>
     <h4>Refinements</h4>
     <p class="body-text" style="font-size:14px">Round 2 scenario answers nudge scores by a few points (both players count equally). Round 3 is deliberately unscored — it’s there to show you your own instincts.</p>
   `);
@@ -857,8 +877,9 @@ const ACTIONS = {
   toWelcome: () => { S.phase = 'welcome'; render(); },
   toPrefs: () => { S.phase = 'prefs'; render(); },
   startSwiping: () => {
-    if (!S.orders) {
-      const ids = BREEDS.map(b => b.id);
+    const anySwipes = Object.keys(S.swipes.p1).length + Object.keys(S.swipes.p2).length;
+    if (!S.orders || !anySwipes) {
+      const ids = deckBreeds().map(b => b.id);
       S.orders = { p1: shuffle(ids), p2: shuffle(ids) };
     }
     S.turn = 0; S.idx = Object.keys(S.swipes.p1).length ? S.idx : 0;

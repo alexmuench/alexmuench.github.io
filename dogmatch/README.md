@@ -1,8 +1,10 @@
 # Fetch
 
-Find the dog that fits your life. A two-player breed-matching game for
-Alex & Hillary — swipe separately, see where you match.
-Mobile-first static web app, no build step, no dependencies.
+Find the dog that fits your life. A two-player breed-matching game —
+add your names, swipe separately, reveal where you match.
+Mobile-first static web app (iOS-native look, auto dark mode), no build
+step, no dependencies. Pass-and-play on one phone; share the URL and any
+couple can play.
 
 ## Running it
 
@@ -21,7 +23,7 @@ Once this branch is merged into `gh-pages`, it deploys automatically to
 | File | What it is |
 |---|---|
 | `index.html` | Shell — everything renders client-side |
-| `data.js` | The 22 dog profiles (facts, contextual pros/cons, costs), scenarios, preference schema |
+| `data.js` | The 40 dog profiles (facts, contextual pros/cons, costs), scenarios, preference schema, curated quick deck |
 | `scoring.js` | Pure scoring engine — weighted preferences → % + explicit health/structure penalties |
 | `app.js` | State machine, swipe gestures, bottom sheets, all screens; state persists in `localStorage` |
 | `credits.js` | Per-photo source manifest (generated) |

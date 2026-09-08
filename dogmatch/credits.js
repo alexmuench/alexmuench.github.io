@@ -1,10 +1,26 @@
 const PHOTO_CREDITS = {
+ "aussie": {
+  "file": "australian shepherd dog/Image_32.jpg",
+  "src": "fci"
+ },
+ "aussie.puppy": {
+  "file": "australian shepherd dog/Image_5.jpg",
+  "src": "fci"
+ },
  "basenji": {
   "file": "basenji dog/Image_19.jpg",
   "src": "fci"
  },
  "basenji.puppy": {
   "file": "basenji dog/Image_16.jpg",
+  "src": "fci"
+ },
+ "beagle": {
+  "file": "beagle dog/Image_9.JPG",
+  "src": "fci"
+ },
+ "beagle.puppy": {
+  "file": "beagle dog/Image_31.jpg",
   "src": "fci"
  },
  "bolognese": {
@@ -22,6 +38,10 @@ const PHOTO_CREDITS = {
  "border.puppy": {
   "file": "terrier-border/n02093754_4332.jpg",
   "src": "dogceo"
+ },
+ "bordercollie": {
+  "file": "border collie dog/Image_5.jpg",
+  "src": "fci"
  },
  "boston": {
   "file": "boston terrier dog/Image_30.jpg",
@@ -55,6 +75,22 @@ const PHOTO_CREDITS = {
   "file": "cirneco dell'etna dog/Image_23.png",
   "src": "fci"
  },
+ "cocker": {
+  "file": "english cocker spaniel dog/Image_8.jpg",
+  "src": "fci"
+ },
+ "cocker.puppy": {
+  "file": "english cocker spaniel dog/Image_18.jpeg",
+  "src": "fci"
+ },
+ "corgi": {
+  "file": "welsh corgi (pembroke) dog/Image_6.jpeg",
+  "src": "fci"
+ },
+ "corgi.puppy": {
+  "file": "welsh corgi (pembroke) dog/Image_14.jpg",
+  "src": "fci"
+ },
  "dachshund": {
   "file": "dachshund dog/Image_9.jpg",
   "src": "fci"
@@ -79,6 +115,22 @@ const PHOTO_CREDITS = {
   "file": "english toy terrier (black &tan) dog/Image_13.jpg",
   "src": "fci"
  },
+ "frenchie": {
+  "file": "french bulldog/Image_1.jpg",
+  "src": "fci"
+ },
+ "frenchie.puppy": {
+  "file": "french bulldog/Image_10.jpg",
+  "src": "fci"
+ },
+ "golden": {
+  "file": "golden retriever dog/Image_30.jpg",
+  "src": "fci"
+ },
+ "golden.puppy": {
+  "file": "golden retriever dog/Image_19.jpg",
+  "src": "fci"
+ },
  "gpinscher": {
   "file": "pinscher/Coffee_Soul_Bari016.jpg",
   "src": "dogceo"
@@ -95,12 +147,40 @@ const PHOTO_CREDITS = {
   "file": "havanese/00100trPORTRAIT_00100_BURST20191103202017556_COVER.jpg",
   "src": "dogceo"
  },
+ "husky": {
+  "file": "siberian husky dog/Image_35.jpg",
+  "src": "fci"
+ },
+ "husky.puppy": {
+  "file": "siberian husky dog/Image_29.jpg",
+  "src": "fci"
+ },
  "iggy": {
   "file": "italian sighthound dog/Image_3.jpg",
   "src": "fci"
  },
  "iggy.puppy": {
   "file": "italian sighthound dog/Image_22.jpg",
+  "src": "fci"
+ },
+ "jrt": {
+  "file": "jack russell terrier dog/Image_24.jpg",
+  "src": "fci"
+ },
+ "labrador": {
+  "file": "labrador retriever dog/Image_19.jpg",
+  "src": "fci"
+ },
+ "labrador.puppy": {
+  "file": "labrador retriever dog/Image_11.jpg",
+  "src": "fci"
+ },
+ "maltese": {
+  "file": "maltese dog/Image_35.jpg",
+  "src": "fci"
+ },
+ "maltese.puppy": {
+  "file": "maltese dog/Image_6.jpg",
   "src": "fci"
  },
  "manchester": {
@@ -123,6 +203,22 @@ const PHOTO_CREDITS = {
   "file": "poodle dog/Image_14.jpg",
   "src": "fci"
  },
+ "papillon": {
+  "file": "continental toy spaniel dog/Image_12.jpg",
+  "src": "fci"
+ },
+ "pom": {
+  "file": "german spitz dog/Image_16.jpg",
+  "src": "fci"
+ },
+ "pug": {
+  "file": "pug dog/Image_16.jpg",
+  "src": "fci"
+ },
+ "pug.puppy": {
+  "file": "pug dog/Image_35.jpg",
+  "src": "fci"
+ },
  "ratterrier": {
   "file": "terrier-toy/n02087046_7365.jpg",
   "src": "dogceo"
@@ -143,6 +239,22 @@ const PHOTO_CREDITS = {
   "file": "miniature schnauzer dog/Image_9.jpg",
   "src": "fci"
  },
+ "shiba": {
+  "file": "shiba dog/Image_3.jpg",
+  "src": "fci"
+ },
+ "shiba.puppy": {
+  "file": "shiba dog/Image_24.jpg",
+  "src": "fci"
+ },
+ "shihtzu": {
+  "file": "shih tzu dog/Image_12.jpg",
+  "src": "fci"
+ },
+ "shihtzu.puppy": {
+  "file": "shih tzu dog/Image_30.jpg",
+  "src": "fci"
+ },
  "toypoodle": {
   "file": "poodle-toy/Cookie.jpg",
   "src": "dogceo"
@@ -151,12 +263,20 @@ const PHOTO_CREDITS = {
   "file": "poodle dog/Image_17.jpg",
   "src": "fci"
  },
+ "westie": {
+  "file": "west highland white terrier dog/Image_30.jpg",
+  "src": "fci"
+ },
  "whippet": {
   "file": "whippet dog/Image_26.jpg",
   "src": "fci"
  },
  "whippet.puppy": {
   "file": "whippet dog/Image_17.jpg",
+  "src": "fci"
+ },
+ "yorkie": {
+  "file": "yorkshire terrier dog/Image_25.jpeg",
   "src": "fci"
  }
 };
