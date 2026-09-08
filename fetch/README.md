@@ -11,12 +11,13 @@ couple can play.
 Any static server works:
 
 ```
-cd dogmatch && python3 -m http.server 8000
+cd fetch && python3 -m http.server 8000
 ```
 
-Once this branch is merged into `gh-pages`, it deploys automatically to
-`/dogmatch/` on the site (the repo's CNAME currently points the site at
-`flywithmeapp.co`, so the app lands at `https://flywithmeapp.co/dogmatch/`).
+Once this branch is merged into `gh-pages`, the app deploys automatically to
+**https://alexmuench.github.io/fetch/** (this branch also removes the repo's
+old CNAME for the lapsed `flywithmeapp.co` domain, which was redirecting the
+whole site to a dead address).
 
 ## Structure
 
@@ -42,7 +43,7 @@ small averaged refinements. To retune anything, edit `facts` in `data.js`
 and check the table with:
 
 ```
-cd dogmatch && node -e "const {BREEDS,PREF_SCHEMA}=require('./data.js');const S=require('./scoring.js');const p=Object.fromEntries(PREF_SCHEMA.map(x=>[x.id,x.def]));BREEDS.map(b=>({n:b.name,s:S.computeScore(b,p).pct})).sort((a,b)=>b.s-a.s).forEach(r=>console.log(r.s,r.n))"
+cd fetch && node -e "const {BREEDS,PREF_SCHEMA}=require('./data.js');const S=require('./scoring.js');const p=Object.fromEntries(PREF_SCHEMA.map(x=>[x.id,x.def]));BREEDS.map(b=>({n:b.name,s:S.computeScore(b,p).pct})).sort((a,b)=>b.s-a.s).forEach(r=>console.log(r.s,r.n))"
 ```
 
 ## Photography

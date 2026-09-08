@@ -5,7 +5,7 @@
 const PUPPY_IDS = ['aussie','basenji','beagle','bolognese','border','boston','cavalier','chihuahua',
   'cirneco','cocker','corgi','dachshund','dsf','ett','frenchie','golden','gpinscher','husky','iggy',
   'labrador','maltese','manchester','minipoodle','pug','rescue','schnauzer','shiba','shihtzu','toypoodle','whippet'];
-const STORE_KEY = 'dogmatch-v1';
+const STORE_KEY = 'fetch-v1';
 
 const I = {
   heart: '<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21c-.4 0-.8-.14-1.1-.42C6.6 16.9 2.5 13.3 2.5 9.3 2.5 6.4 4.8 4 7.6 4c1.7 0 3.3.86 4.4 2.24C13.1 4.86 14.7 4 16.4 4c2.8 0 5.1 2.4 5.1 5.3 0 4-4.1 7.6-8.4 11.28-.3.28-.7.42-1.1.42Z"/></svg>',
@@ -863,7 +863,7 @@ function creditsSheet() {
       <li><span class="dot" style="background:var(--sage)"></span><span><b>${esc(PHOTO_SOURCES.fci.name)}</b> — ${esc(PHOTO_SOURCES.fci.license)}</span></li>
       <li><span class="dot" style="background:var(--sage)"></span><span><b>${esc(PHOTO_SOURCES.dogceo.name)}</b> — ${esc(PHOTO_SOURCES.dogceo.license)}</span></li>
     </ul>
-    <p class="note" style="margin-top:10px">The Rat Terrier photo shows a rat-terrier-type dog from the toy terrier collection — true Rat Terrier photos are rare in open datasets. Swap any photo by replacing its file in <code>dogmatch/img/</code>.</p>
+    <p class="note" style="margin-top:10px">The Rat Terrier photo shows a rat-terrier-type dog from the toy terrier collection — true Rat Terrier photos are rare in open datasets. Swap any photo by replacing its file in <code>fetch/img/</code>.</p>
     <details style="margin-top:14px"><summary style="font-weight:650;font-size:14px">Per-image sources</summary>
       <div class="coat-grid" style="margin-top:10px;font-size:12.5px">
         ${entries.map(([k, v]) => `<span class="k">${esc(k)}</span><span>${esc(v.src)}: ${esc(v.file)}</span>`).join('')}
