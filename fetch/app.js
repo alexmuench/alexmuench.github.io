@@ -4,7 +4,7 @@
 /* ---------- constants ---------- */
 const PUPPY_IDS = ['aussie','basenji','beagle','bolognese','border','boston','cavalier','chihuahua',
   'cirneco','cocker','corgi','dachshund','dsf','ett','frenchie','golden','gpinscher','husky','iggy',
-  'labrador','maltese','manchester','minipoodle','pug','rescue','schnauzer','shiba','shihtzu','toypoodle','whippet','gsd','boxer','dalmatian'];
+  'labrador','maltese','manchester','minipoodle','pug','rescue','schnauzer','shiba','shihtzu','toypoodle','whippet','gsd','boxer','dalmatian','rottweiler','bichon'];
 const STORE_KEY = 'fetch-v1';
 
 const I = {

@@ -1239,6 +1239,118 @@ const BREEDS = [
     why: 'A running partner in formal wear — with industrial shedding.',
     watch: 'Mileage and hair; always check hearing (BAER).',
     pos: '50% 35%'
+  },
+  {
+    id: 'rottweiler', name: 'Rottweiler', de: 'Rottweiler',
+    weight: '35–60 kg', kg: [35, 60],
+    tags: ['powerful', 'devoted', 'listed breed'],
+    line: 'A gentle heart in a bouncer’s body — with paperwork attached.',
+    facts: { shed: 0.35, brush: 'weekly', groom: 'none', exercise: 100,
+      calm: 3, affection: 4.5, quiet: 3.5, train: 4.5, apartment: 2.5,
+      travel: 1.5, alone: 3, health: 2.5 },
+    flags: ['big', 'watchdog', 'listed'],
+    cost: '€150–210', puppyDiff: 'A serious two-year project — strength arrives before judgement.',
+    rescueDE: 'Common — powerful breeds are surrendered often; experienced homes only.',
+    feels: 'With its own people a Rottweiler is a devoted, frequently goofy shadow. It is also 45 kilos of guarding heritage that needs an experienced hand — and in Bavaria and several other states it’s a listed breed, with temperament tests and permits before you may keep one at all.',
+    pros: [
+      'Deeply loyal, highly trainable working partner',
+      'Calm confidence — the opposite of yappy',
+      'Short, low-fuss coat',
+      'Thrives on structure, jobs and clear leadership'
+    ],
+    cons: [
+      'Listed breed (Bavaria Kat. 2 and elsewhere): temperament test, permits, insurance hurdles',
+      '40+ kg against stairs, trains and hotel policies',
+      'Guarding instincts demand expert socialisation from day one',
+      'Cancer and joint disease cut the average lifespan to ~9 years'
+    ],
+    why: 'Magnificent with experts — legally and physically oversized for this brief.',
+    watch: 'Listed-breed law, sheer power, and a short health span.',
+    pos: '50% 30%'
+  },
+  {
+    id: 'bulldog', name: 'English Bulldog', de: 'Englische Bulldogge',
+    weight: '18–25 kg', kg: [18, 25],
+    tags: ['champion loafer', 'gentle', 'extreme build'],
+    line: 'The world’s most committed napper, built at the edge of what a dog can be.',
+    facts: { shed: 0.5, brush: 'rare', groom: 'none', exercise: 35,
+      calm: 5, affection: 4.5, quiet: 4.5, train: 2.5, apartment: 4.5,
+      travel: 2, alone: 3.5, health: 1 },
+    flags: ['brachy', 'back'],
+    cost: '€120–190 + vet risk', puppyDiff: 'Mellow — though most litters arrive by C-section, which says everything.',
+    rescueDE: 'Occasional — usually with a vet file attached.',
+    feels: 'Nothing on this list is calmer, quieter or funnier per unit of effort. And nothing is bred closer to the physical limit: airways, skin folds, spine, hips — most bulldogs can’t even give birth naturally. Living with one is easy; keeping one healthy is the actual project.',
+    pros: [
+      'Supremely calm and quiet — an ideal flat temperament on paper',
+      'Minimal exercise demands',
+      'Loves everyone; allergic to drama',
+      'Wash-and-go coat'
+    ],
+    cons: [
+      'The most extreme conformation in dogdom: breathing, skin, spine, eyes',
+      'Summer heat is a genuine medical emergency risk',
+      'High vet bills and a ~8-year lifespan are the norm, not bad luck',
+      'Airlines refuse it; even gentle hills are cardio'
+    ],
+    why: 'Temperament ideal; the body is a heartbreaking engineering compromise.',
+    watch: 'Health, health, health — we score the build, not the personality.',
+    pos: '50% 35%'
+  },
+  {
+    id: 'bichon', name: 'Bichon Frisé', de: 'Bichon Frisé',
+    weight: '4–6 kg', kg: [4, 6],
+    tags: ['cheerful cloud', 'no shedding', 'coat work'],
+    line: 'A powder-puff optimist. The powder puff requires staff.',
+    facts: { shed: 0.9, brush: 'daily', groom: 'regular', exercise: 45,
+      calm: 4, affection: 5, quiet: 3, train: 4, apartment: 5,
+      travel: 4.5, alone: 2.5, health: 4 },
+    flags: ['velcro'],
+    cost: '€105–150', puppyDiff: 'Sunny-natured; house-training is slow, like all the little white companions.',
+    rescueDE: 'Regular — small white companion dogs circulate steadily.',
+    feels: 'The merriest of the white companion breeds: bouncy, sociable, nearly shed-free — and wearing a coat that mats while you sleep. Clipped short it’s manageable; in full puff it’s a part-time job with a heartbeat.',
+    pros: [
+      'Joyful, people-adoring temperament',
+      'Effectively zero loose hair in the flat',
+      'Perfect apartment scale, sturdy for a toy breed',
+      'Travels happily anywhere'
+    ],
+    cons: [
+      'Daily combing or standing groomer bills — the coat is the price of admission',
+      'Bred for constant company; alone-time is its weak event',
+      'Some alert barking comes standard',
+      'Tear-staining patrol, forever'
+    ],
+    why: 'Delightful company under high-maintenance topiary.',
+    watch: 'The coat and the clinginess — both are daily line items.',
+    pos: '50% 35%'
+  },
+  {
+    id: 'staffy', name: 'Staffordshire Bull Terrier', de: 'Staffordshire Bullterrier',
+    weight: '11–17 kg', kg: [11, 17],
+    tags: ['people-adoring', 'muscular', 'listed breed'],
+    line: 'Britain’s babysitter breed — wrapped in German paperwork.',
+    facts: { shed: 0.6, brush: 'rare', groom: 'none', exercise: 90,
+      calm: 3.5, affection: 5, quiet: 4, train: 3.5, apartment: 4,
+      travel: 2, alone: 3, health: 3.5 },
+    flags: ['listed'],
+    cost: '€110–160', puppyDiff: 'Exuberant and mouthy — early dog-dog socialisation is the whole game.',
+    rescueDE: 'Common in shelters — listed-breed rules tragically slow their rehoming.',
+    feels: 'Few breeds love humans as unconditionally as a Staffie — in Britain they’re nicknamed nanny dogs. The catch in Germany is legal, not temperamental: Bavaria lists the breed in Category 1, effectively barring ownership without an exceptional permit, and other states add muzzle and permit rules.',
+    pros: [
+      'Extreme, joyful devotion to its people',
+      'Compact, muscular, wash-and-go coat',
+      'Quiet, sturdy and sensibly sized',
+      'Famously patient with children'
+    ],
+    cons: [
+      'Category-1 listed breed in Bavaria — ownership there is effectively barred',
+      'Muzzle and permit rules complicate travel between German states',
+      'Can be selective with unfamiliar dogs; socialisation matters',
+      'Needs genuine daily exercise, not strolls'
+    ],
+    why: 'A human-adoring athlete that breed-list law makes nearly impossible in parts of Germany.',
+    watch: 'Breed legislation — check your state before you fall in love.',
+    pos: '50% 30%'
   }
 ];
 
@@ -1355,6 +1467,7 @@ const FLAG_INFO = {
   back: { label: 'Spinal (IVDD) risk — stairs and jumps need managing', pts: -6 },
   fragile: { label: 'Physical fragility', pts: -4 },
   big: { label: 'Big-dog logistics in a walk-up flat', pts: -4 },
+  listed: { label: 'Listed/restricted breed in several German states', pts: -8 },
   offleash: { label: 'Off-leash freedom is limited', pts: 0 },
   velcro: { label: 'Dislikes being alone', pts: 0 },
   watchdog: { label: 'Watchdog/alert instincts', pts: 0 }

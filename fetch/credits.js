@@ -23,6 +23,14 @@ const PHOTO_CREDITS = {
   "file": "beagle dog/Image_31.jpg",
   "src": "fci"
  },
+ "bichon": {
+  "file": "bichon frise dog/Image_10.jpg",
+  "src": "fci"
+ },
+ "bichon.puppy": {
+  "file": "bichon frise dog/Image_12.jpg",
+  "src": "fci"
+ },
  "bolognese": {
   "file": "bolognese dog/Image_20.jpg",
   "src": "fci"
@@ -57,6 +65,10 @@ const PHOTO_CREDITS = {
  },
  "boxer.puppy": {
   "file": "boxer dog/Image_10.JPG",
+  "src": "fci"
+ },
+ "bulldog": {
+  "file": "bulldog/Image_3.jpg",
   "src": "fci"
  },
  "cavalier": {
@@ -259,6 +271,14 @@ const PHOTO_CREDITS = {
   "file": "mix/Blaze_07.jpg",
   "src": "dogceo"
  },
+ "rottweiler": {
+  "file": "rottweiler dog/Image_19.jpg",
+  "src": "fci"
+ },
+ "rottweiler.puppy": {
+  "file": "rottweiler dog/Image_35.JPG",
+  "src": "fci"
+ },
  "schnauzer": {
   "file": "miniature schnauzer dog/Image_3.jpg",
   "src": "fci"
@@ -281,6 +301,10 @@ const PHOTO_CREDITS = {
  },
  "shihtzu.puppy": {
   "file": "shih tzu dog/Image_30.jpg",
+  "src": "fci"
+ },
+ "staffy": {
+  "file": "staffordshire bull terrier dog/Image_6.jpg",
   "src": "fci"
  },
  "toypoodle": {
